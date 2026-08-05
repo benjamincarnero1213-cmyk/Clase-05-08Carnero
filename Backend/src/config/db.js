@@ -1,13 +1,13 @@
-const sql = require("mssql");
+const sql = require("mssql/msnodesqlv8");
 const path = require("path");
 require("dotenv").config({ path: path.join(__dirname, "../../.env") });
 const dbConfig = {
- user: process.env.DB_USER,
- password: process.env.DB_PASSWORD,
+ driver: "ODBC Driver 17 for SQL Server",
  server: process.env.DB_SERVER,
  database: process.env.DB_DATABASE,
  options: {
  instanceName: process.env.DB_INSTANCE,
+ trustedConnection: true,
  encrypt: process.env.DB_ENCRYPT === "true",
  trustServerCertificate: process.env.DB_TRUST_CERT === "true",
  enableArithAbort: true
